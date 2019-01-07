@@ -1,0 +1,55 @@
+﻿头文件：#include <string.h>
+//strcpy,strcat,strlen,strdup函数声明
+定义函数：char *strcpy(char *dest, const char *src);
+
+函数说明：strcpy()会将参数src 字符串拷贝至参数dest 所指的地址。
+
+返回值：返回参数dest 的字符串起始地址。
+
+附加说明：如果参数 dest 所指的内存空间不够大，可能会造成缓冲溢出(buffer Overflow)的错误情况，
+在编写程序时请特别留意，或者用strncpy()来取代。
+
+/******************/
+
+定义函数：char * strdup(const char *s);
+
+函数说明：strdup()会先用maolloc()配置与参数s 字符串相同的空间大小，然后将参数s 字符串的内容复制到该内存地址，然后把该地址返回。该地址最后可以利用free()来释放。
+
+返回值：返回一字符串指针，该指针指向复制后的新字符串地址。若返回NULL 表示内存不足。
+
+附加说明:使用后用free().strdup()主要是拷贝字符串s的一个副本，由函数返回值返回，这个副本有自己的内存空间，和s不相干。strdup函数复制一个字符串，使用完后要记得删除在函数中动态申请的内存，strdup函数的参数不能为NULL，一旦为NULL，就会报段错误，因为该函数包括了strlen函数，而该函数参数不能是NULL。
+
+/******************/
+
+strcat	
+
+  原型：extern char *strcat(char *dest,char *src);
+        
+  用法：#include <string.h>
+  
+  功能：把src所指字符串添加到dest结尾处(覆盖dest结尾处的'\0')并添加'\0'。
+  
+  说明：src和dest所指内存区域不可以重叠且dest必须有足够的空间来容纳src的字符串。
+        返回指向dest的指针。
+
+/******************/
+stpcpy
+	
+  原型：extern char *stpcpy(char *dest,char *src);
+        
+  用法：#include <string.h>
+  
+  功能：把src所指由NULL结束的字符串复制到dest所指的数组中。
+  
+  说明：src和dest所指内存区域不可以重叠且dest必须有足够的空间来容纳src的字符串。
+        返回指向dest结尾处字符(NULL)的指针。
+/******************/
+strlen
+
+  原型：extern int strlen(char *s);
+        
+  用法：#include <string.h>
+  
+  功能：计算字符串s的长度
+  
+  说明：返回s的长度，不包括结束符NULL。
